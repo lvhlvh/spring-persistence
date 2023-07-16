@@ -1,4 +1,4 @@
-use spring_persistence;
+drop table if exists balance;
 create table if not exists balance
 (
     `user_id`   int(10) primary key,
