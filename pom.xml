@@ -15,7 +15,7 @@
     <name>spring-persistence</name>
     <description>spring-persistence</description>
     <modules>
-        <module>d01-tx-programmatic</module>
+        <module>d01-tx</module>
     </modules>
     <properties>
         <java.version>17</java.version>

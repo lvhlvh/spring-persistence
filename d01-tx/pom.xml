@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>com.lvhao</groupId>
-    <artifactId>d01-tx-programmatic</artifactId>
+    <artifactId>d01-tx</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
