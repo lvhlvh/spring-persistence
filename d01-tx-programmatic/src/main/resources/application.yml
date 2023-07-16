@@ -6,3 +6,7 @@ spring:
     url: jdbc:mysql://localhost:3306/spring_persistence?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: root
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.lvhao.entity
