@@ -1,8 +1,8 @@
 package com.lvhao.service.impl;
 
-import com.lvhao.dao.BalanceMapper;
-import com.lvhao.entity.Balance;
-import com.lvhao.service.BalanceService;
+import com.lvhao.dao.AccountMapper;
+import com.lvhao.entity.Account;
+import com.lvhao.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -11,18 +11,18 @@ import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 @Service
 @RequiredArgsConstructor
-public class TxManagerBalanceService implements BalanceService {
+public class TxManagerAccountService implements AccountService {
 
-  private final BalanceMapper balanceMapper;
+  private final AccountMapper accountMapper;
   private final PlatformTransactionManager txManager;
 
   @Override
-  public void transfer(int fromUserId, int toUserId, int amount) {
-    Balance fromBalance = balanceMapper.selectByPrimaryKey(fromUserId);
-    Balance toBalance = balanceMapper.selectByPrimaryKey(toUserId);
+  public void transfer(int fromId, int toId, int amount) {
+    Account fromAccount = accountMapper.selectByPrimaryKey(fromId);
+    Account toAccount = accountMapper.selectByPrimaryKey(toId);
 
-    fromBalance.setBalance(fromBalance.getBalance() - amount);
-    toBalance.setBalance(toBalance.getBalance() + amount);
+    fromAccount.setBalance(fromAccount.getBalance() - amount);
+    toAccount.setBalance(toAccount.getBalance() + amount);
 
     // 1. transactionDefinition代表了事务相关的配置, 等价于@Transactional注解里面那些配置,
     //    DefaultTransactionDefinition和@Transactional注解默认的配置相同
@@ -31,9 +31,9 @@ public class TxManagerBalanceService implements BalanceService {
     TransactionStatus transaction = txManager.getTransaction(transactionDefinition);
     // 3. 执行事务逻辑
     try {
-      balanceMapper.updateByPrimaryKey(fromBalance);
-      balanceMapper.updateByPrimaryKey(toBalance);
-      int i  =1 / 0;
+      accountMapper.updateByPrimaryKey(fromAccount);
+      accountMapper.updateByPrimaryKey(toAccount);
+//      int i = 1 / 0;
       txManager.commit(transaction);
     } catch (Exception e) {
       txManager.rollback(transaction);

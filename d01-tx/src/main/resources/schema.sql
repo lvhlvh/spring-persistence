@@ -1,8 +1,7 @@
-drop table if exists balance;
-create table if not exists balance
+drop table if exists account;
+create table if not exists account
 (
-    `user_id`   int(10) primary key,
-    `user_name` varchar(20) not null,
+    `id`   int(10) primary key,
     `balance`   int(10)     not null default 0
-    ) engine = InnoDB
+) engine = InnoDB
     default character set = utf8mb4;

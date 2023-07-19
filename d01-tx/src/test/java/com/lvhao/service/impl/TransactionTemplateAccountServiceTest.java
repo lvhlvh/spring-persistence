@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TransactionTemplateBalanceServiceTest {
+class TransactionTemplateAccountServiceTest {
 
-  @Autowired private TransactionTemplateBalanceService balanceService;
+  @Autowired private TransactionTemplateAccountService balanceService;
 
   @Test
   void transfer() {

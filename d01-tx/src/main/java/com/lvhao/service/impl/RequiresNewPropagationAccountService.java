@@ -1,7 +1,7 @@
 package com.lvhao.service.impl;
 
-import com.lvhao.dao.BalanceMapper;
-import com.lvhao.entity.Balance;
+import com.lvhao.dao.AccountMapper;
+import com.lvhao.entity.Account;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -9,14 +9,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-public class RequiresNewPropagationBalanceService {
+public class RequiresNewPropagationAccountService {
 
-  private final BalanceMapper balanceMapper;
+  private final AccountMapper accountMapper;
   private final RequiresNewPropagationBalanceService2 requiresNewPropagationBalanceService2;
 
   @Transactional
   public void insertOne() {
-    balanceMapper.insert(new Balance(100, "Bob", 100));
+    accountMapper.insert(new Account(100, 100));
     try {
       requiresNewPropagationBalanceService2.insertAnotherOne();
     } catch (Exception e) {
@@ -29,11 +29,11 @@ public class RequiresNewPropagationBalanceService {
 @RequiredArgsConstructor
 class RequiresNewPropagationBalanceService2 {
 
-  private final BalanceMapper balanceMapper;
+  private final AccountMapper accountMapper;
 
   @Transactional(propagation = Propagation.REQUIRES_NEW)
   public void insertAnotherOne() {
-    balanceMapper.insert(new Balance(101, "Mike", 100));
+    accountMapper.insert(new Account(101, 100));
     throw new RuntimeException();
   }
 }

@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DeclarativeTxBalanceServiceTest {
+class DeclarativeTxAccountServiceTest {
 
-  @Autowired private DeclarativeTxBalanceService balanceService;
+  @Autowired private DeclarativeTxAccountService balanceService;
 
   @Test
   void transfer() throws IOException {

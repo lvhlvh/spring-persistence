@@ -28,7 +28,7 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table schema="spring_persistence" tableName="balance" domainObjectName="Balance">
+        <table schema="spring_persistence" tableName="account" domainObjectName="Balance">
         </table>
 
     </context>
